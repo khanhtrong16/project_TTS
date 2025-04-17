@@ -1,26 +1,25 @@
-const imgs = ["./image/banh3.png", "./image/banh4.png", "./image/banh5.png"];
+const totalSlides = 3;
 let currentIndex = 0;
+
 function showSlide(index) {
-    const imageSlide = document.getElementById("imageSlide");
+    const wrapper = document.getElementById("sliderWrapper");
+    wrapper.style.transform = `translateX(-${index * 100}%)`;
+
     const dots = document.querySelectorAll(".dot");
     dots.forEach((dot, i) => {
         dot.classList.toggle("active", i === index);
     });
-    imageSlide.src = imgs[index];
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % imgs.length;
-        imageSlide.src = imgs[currentIndex];
-        dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === currentIndex);
-        });
-    }, 2000);
 }
+
 function currentSlide(index) {
     currentIndex = index;
-    showSlide(currentIndex);
+    showSlide(index);
 }
-showSlide(currentIndex);
 
+setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    showSlide(currentIndex);
+}, 3000);
 const menu = document.getElementById("menu-toggle");
 menu.addEventListener("click", function () {
     const menu_mobile = document.getElementById("mobile-menu");
@@ -31,6 +30,12 @@ menu.addEventListener("click", function () {
     }
 });
 
+const stickyMenuToggle = document.getElementById("menu-toggle-sticky");
+const stickyMobileMenu = document.getElementById("mobile-menu-sticky");
+
+stickyMenuToggle.addEventListener("click", () => {
+    stickyMobileMenu.classList.toggle("show");
+});
 const stickyNav = document.getElementById("stickyMenu");
 const banner = document.querySelector(".banner");
 
@@ -38,13 +43,8 @@ window.addEventListener("scroll", () => {
     const bannerBottom = banner.offsetTop + banner.offsetHeight;
     if (window.scrollY > bannerBottom) {
         stickyNav.classList.remove("sticky-hidden");
+        stickyMobileMenu.classList.remove("show");
     } else {
         stickyNav.classList.add("sticky-hidden");
     }
-});
-const stickyToggle = document.getElementById("menu-toggle-sticky");
-const stickyMobileMenu = document.getElementById("mobile-menu-sticky");
-
-stickyToggle.addEventListener("click", () => {
-    stickyMobileMenu.classList.toggle("d-none");
 });

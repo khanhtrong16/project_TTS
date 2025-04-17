@@ -17,6 +17,7 @@
         <script>
             $(function () {
                 $("#datepicker").datepicker();
+                $("#datepicker2").datepicker();
             });
         </script>
         <link rel="stylesheet" href="css.css" />
@@ -56,13 +57,13 @@
                     </div>
                 </nav>
                 <nav class="sticky-nav sticky-hidden d-md-flex" id="stickyMenu">
-                    <div class="nav-logo">
+                    <div class="nav-logo d-flex justify-content-between align-items-center">
                         <a href="#"><img class="img-fluid" src="./image/logo.png" alt="" id="logo-mobile-sticky" /></a>
-                        <!-- <button class="d-md-none btn border-0 pe-0" id="menu-toggle">
-                            <i class="bx bx-menu" id="icon-menu"></i>
-                        </button> -->
+                        <button class="d-md-none btn border-0 pe-0" id="menu-toggle-sticky">
+                            <i class="bx bx-menu" id="icon-menu-sticky"></i>
+                        </button>
                     </div>
-                    <div class="nav-menu-mobile justify-content-between align-items-center mobile-dropdown d-sm-none" id="mobile-menu">
+                    <div class="nav-menu-mobile justify-content-between align-items-center mobile-dropdown d-sm-none" id="mobile-menu-sticky">
                         <ul class="nav-list d-flex list-unstyled mb-0 fw-normal flex-wrap">
                             <li class="nav-item"><a href="#" class="text-decoration-none">HOME</a></li>
                             <li class="nav-item"><a href="#" class="text-decoration-none">MENU</a></li>
@@ -182,8 +183,12 @@
                                 <button class="dot" onclick="currentSlide(2)"></button>
                             </div>
                         </div>
-                        <div class="content-right">
-                            <img id="imageSlide" class="img-fluid" src="" alt="banh3" loading="lazy" />
+                        <div class="content-right overflow-hidden">
+                            <div id="sliderWrapper" class="d-flex">
+                                <img src="./image/banh3.png" class="img-slide img-fluid" />
+                                <img src="./image/banh5.png" class="img-slide img-fluid" />
+                                <img src="./image/banh3.png" class="img-slide img-fluid" />
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -200,7 +205,7 @@
                         </div>
                         <div class="booking-form-right d-flex flex-column gap-4">
                             <input type="text" class="form-control w-100" placeholder="EMAIL" />
-                            <input type="text" class="form-control w-100" placeholder="TIME" />
+                            <input type="text" class="form-control" id="datepicker2" placeholder="TIME" />
                             <button class="border-0 rounded bg-danger text-white fw-bold fs-4 py-3 w-100">FIND A TABLE</button>
                         </div>
                     </div>
